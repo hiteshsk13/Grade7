@@ -4,5 +4,3 @@ cv2
 os
 numpy
 PIL
-# Secrets
-.env
