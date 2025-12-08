@@ -2,22 +2,21 @@ name: Test Gemini Connection
 on: [push] 
 jobs:
   test_api:
-    runs-on: ubuntu-latest   
+    runs-on: ubuntu-latest    
     steps:
       - name: ⚙️ Checkout repository code
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python and Install Dependencies
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Use a recent stable Python version
-          # This step automatically looks for and installs dependencies from requirements.txt
-          cache: 'pip' 
+          python-version: '3.11'
+
+      - name: 📦 Install Python Dependencies
+        # This explicit step ensures all libraries in requirements.txt are installed
+        run: pip install -r requirements.txt
 
       - name: 🚀 Run API Test Script
-        # This step is critical: it passes the GitHub Secret to the script
         env:
-          # The name must exactly match the variable expected by the Python script
-          # The value comes from the secret you created in GitHub repository settings
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python stem.py
