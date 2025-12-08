@@ -1,0 +1,8 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run script
+        run: stem.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} # Inject the secret as an environment variable
