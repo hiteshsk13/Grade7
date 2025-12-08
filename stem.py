@@ -7,7 +7,8 @@ from PIL import Image
 
 st.title("Crop Guard AI")
 
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+genai.configure(api_key=st.secrets("GEMINI_API_KEY"))
+# genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 st.markdown("""
@@ -148,4 +149,5 @@ if the rottens high, that means that there is less pesticides
     st.write(f"AI Analysis for All Images:")
 
     st.write(response.text)
+
 
