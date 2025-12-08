@@ -34,7 +34,7 @@ uploaded_images = st.file_uploader(
 # Only enable submit if exactly 12 images are uploaded
 submit = st.button(
     "Analyze Images",
-    disabled=(len(uploaded_images) != 4 if uploaded_images else True)
+    disabled=(len(uploaded_images) != 1 if uploaded_images else True)
 )
 
 #justs lets the user know they have to add more pictures, and the if and eles is for plural and singular
@@ -148,4 +148,5 @@ if the rottens high, that means that there is less pesticides
     st.write(f"AI Analysis for All Images:")
 
     st.write(response.text)
+
 
