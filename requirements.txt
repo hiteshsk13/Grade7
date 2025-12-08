@@ -3,3 +3,4 @@ google-generativeai
 opencv-python-headless
 numpy
 Pillow
+google-genai
