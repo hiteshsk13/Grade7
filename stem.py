@@ -5,14 +5,53 @@ import os
 import numpy as np
 from PIL import Image
 
-st.title("Crop Guard AI")
+st.set_page_config(
+    page_title="Crop Guard AI",
+    page_icon="🍏",
+    layout="wide"
+)
 
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-# genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+st.title("Crop Guard AI")
+st.markdown("""About:
+this is built to detect pesticides, this was made by Hitesh, Arindam, and Nidhaan.
+""")
+
+genai.configure(api_key= 'AIzaSyBR5oTvJe26PWg--LnYf83vD7iKa_Gvi6Q')
+
+model = genai.GenerativeModel("gemini-2.5-flash")
+
+st.markdown("""
+<style>
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(to bottom right, #b2f7b2, #add8e6, #4a7c4a);
+    background-attachment: fixed;
+    color: black;  /* sets all text to black */
+}
+
+h1, h2, h3, h4, h5, h6, p, span, div {
+    color: black !important;
+}
+
+.stButton>button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# Upload multiple images
+uploaded_images = st.file_uploader(
+    "Upload 12 images",
+    type=["png", "jpg", "jpeg"],
+    accept_multiple_files=True
+)
 
 # Only enable submit if exactly 12 images are uploaded
 submit = st.button(
-   "Analyze Images",
+   "🔍Analyze Images",
    disabled=(len(uploaded_images) != 4 if uploaded_images else True)
 )
 
@@ -20,12 +59,12 @@ submit = st.button(
 #justs lets the user know they have to add more pictures, and the if and eles is for plural and singular
 if uploaded_images:
     if len(uploaded_images) == 4:
-        st.success ("Your all set") #change this to something that is not emergency
+        st.success ("✅Your all set")
     else:
         if len(uploaded_images) == 1 - 3:
-            st.error(f"You have uploaded 1 image. Upload exactly { 4-len(uploaded_images)} more images to enable analysis.")
+            st.error(f"⚠️You have uploaded 1 image. Upload exactly { 4-len(uploaded_images)} more images to enable analysis.⚠️")
         else:
-            st.error(f"You have uploaded {len(uploaded_images)} images. Upload exactly { 4-len(uploaded_images)} more images to enable analysis.")
+            st.error(f"⚠️You have uploaded {len(uploaded_images)} images. Upload exactly { 4-len(uploaded_images)} more images to enable analysis.⚠️")
 
 def analyze_image_cv(image_cv):
     avg_color = np.mean(image_cv, axis=(0,1))
@@ -56,7 +95,7 @@ if submit:
     with st.spinner("Analyzing all images together..."):
         all_images_data = []
     for uploaded_image in uploaded_images:  # this code tells the code to go through every image one by one
-        image = Image.open(uploaded_image)
+        image = Image.open(uploaded_image) #this is defining the image ans setting it as a variable to be sent to API
         image_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
         avg_color, shine, dark_spots, color_uniformity = analyze_image_cv(image_cv)
@@ -70,7 +109,7 @@ if submit:
 
 
 
-    # Fill the original prompt for all images together, keeping comments exactly
+    # the prompt is the most important piece of code in the whole AI
     prompt_filled_all = ""
     for idx, d in enumerate(all_images_data, start=1):
         prompt_filled_all += ("""
@@ -139,7 +178,3 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
-
-
-
-
