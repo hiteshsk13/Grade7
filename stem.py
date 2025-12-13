@@ -13,9 +13,7 @@ st.set_page_config(
 
 st.title("Crop Guard AI")
 st.markdown("""
-<b><u>About:</b><br>
-This is built to detect pesticides.<br>
-This was made by Hitesh, Arindam, and Nidhaan.</u>
+<b><u>About:</b><br> This is built to detect pesticides, wax, rot and ripe.<br> This was made by Hitesh, Arindam, and Nidhaan.</u>
 """, unsafe_allow_html=True)
 
 
@@ -183,5 +181,6 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
