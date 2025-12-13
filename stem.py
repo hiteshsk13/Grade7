@@ -13,7 +13,7 @@ st.set_page_config(
 
 st.title("Crop Guard AI")
 st.markdown("""
-<b><u>About:</b><br> This is built to detect pesticides, wax, rot and ripe.<br> This was made by Hitesh, Arindam, and Nidhaan.</u>
+<b><u>About:</b><br> This is built to detect pesticides, wax, rot and ripe.<br> This was made by Hitesh, Arindam, and Nidhaan. works on phone, computer, ipad, and everything eles</u>
 """, unsafe_allow_html=True)
 
 
@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6, p, span, div {
 
 # Upload multiple images
 uploaded_images = st.file_uploader(
-    "Upload 12 images",
+    "Upload 4 images of your fruit",
     type=["png", "jpg", "jpeg"],
     accept_multiple_files=True
 )
@@ -181,6 +181,7 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
 
