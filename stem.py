@@ -83,14 +83,6 @@ def analyze_image_cv(image_cv):
     return avg_color, shine, dark_spots, color_uniformity
     # this sets the variables so it can be used in the prompts: average color, shine %, dark spots %, color uniformity %
 
-# Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-reference_path = os.path.join(script_dir, "ISP THING.png")
-
-# Open the file safely
-with open(reference_path, "rb") as f:
-    reference_bytes = f.read()
-
 reference_image_part = {
     "mime_type": "image/jpeg",
     "data": reference_bytes
@@ -173,8 +165,7 @@ avredge each picture then show outcome
     # Prepare all images list
     all_images = [
         prompt_filled_all,
-        {"mime_type": uploaded_images[0].type, "data": first_image_bytes},
-        reference_image_part
+        {"mime_type": uploaded_images[0].type, "data": first_image_bytes}
     ]
 
     # Sends everything to Gemini
@@ -183,4 +174,5 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
