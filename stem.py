@@ -12,9 +12,12 @@ st.set_page_config(
 )
 
 st.title("Crop Guard AI")
-st.markdown("""About:
-this is built to detect pesticides, this was made by Hitesh, Arindam, and Nidhaan.
-""")
+st.markdown("""
+<b><u>About:</b><br>
+This is built to detect pesticides.<br>
+This was made by Hitesh, Arindam, and Nidhaan.</u>
+""", unsafe_allow_html=True)
+
 
 #genai.configure(api_key= 'AIzaSyBR5oTvJe26PWg--LnYf83vD7iKa_Gvi6Q')
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
@@ -180,4 +183,5 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
