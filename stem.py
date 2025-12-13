@@ -83,7 +83,12 @@ def analyze_image_cv(image_cv):
     return avg_color, shine, dark_spots, color_uniformity
     # this sets the variables so it can be used in the prompts: average color, shine %, dark spots %, color uniformity %
 
-with open("ISP THING.png", "rb") as f:
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+reference_path = os.path.join(script_dir, "ISP THING.png")
+
+# Open the file safely
+with open(reference_path, "rb") as f:
     reference_bytes = f.read()
 
 reference_image_part = {
@@ -178,3 +183,4 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
