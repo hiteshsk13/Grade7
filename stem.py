@@ -84,14 +84,31 @@ def analyze_image_cv(image_cv):
     return avg_color, shine, dark_spots, color_uniformity
     # this sets the variables so it can be used in the prompts: average color, shine %, dark spots %, color uniformity %
 
+with open("ISP THING.png", "rb") as f:
+    reference_bytes = f.read()
+
+reference_image_part = {
+    "mime_type": "image/jpeg",
+    "data": reference_bytes
+}
+
 if submit:
     with st.spinner("Analyzing all images together..."):
         all_images_data = []
-    for uploaded_image in uploaded_images:  # this code tells the code to go through every image one by one
-        image = Image.open(uploaded_image) #this is defining the image ans setting it as a variable to be sent to API
-        image_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
-        avg_color, shine, dark_spots, color_uniformity = analyze_image_cv(image_cv)
+        for uploaded_image in uploaded_images:
+            image = Image.open(uploaded_image)
+            image_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+
+            avg_color, shine, dark_spots, color_uniformity = analyze_image_cv(image_cv)
+
+            all_images_data.append({
+                "avg_color": avg_color,
+                "shine": shine,
+                "dark_spots": dark_spots,
+                "color_uniformity": color_uniformity
+            })
+
 
         all_images_data.append({
             "avg_color": avg_color.tolist(),
@@ -161,7 +178,8 @@ avredge each picture then show outcome
     # Prepare all images list
     all_images = [
         prompt_filled_all,
-        {"mime_type": uploaded_images[0].type, "data": first_image_bytes}
+        {"mime_type": uploaded_images[0].type, "data": first_image_bytes},
+        reference_image_part
     ]
 
     # Sends everything to Gemini
@@ -170,8 +188,3 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
-
-
-
-
-
