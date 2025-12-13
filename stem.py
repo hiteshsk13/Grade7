@@ -16,7 +16,7 @@ st.markdown("""
 <b><u>About:</b></u><br> This is built to detect pesticides, wax, rot and ripe.<br>
 """, unsafe_allow_html=True)
 st.markdown("""<b><u>instructions:</b></u><br> upload 4 images of a fruit or veggitable, each one side of the fruit,
-then click the analyze button when it is green and wait till you recieve your answe.<br>
+then click the analyze button when it is green and wait till you recieve your answer.<br>
 """, unsafe_allow_html=True)
 
 
@@ -185,5 +185,6 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
