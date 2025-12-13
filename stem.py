@@ -16,7 +16,8 @@ st.markdown("""About:
 this is built to detect pesticides, this was made by Hitesh, Arindam, and Nidhaan.
 """)
 
-genai.configure(api_key= 'AIzaSyBR5oTvJe26PWg--LnYf83vD7iKa_Gvi6Q')
+#genai.configure(api_key= 'AIzaSyBR5oTvJe26PWg--LnYf83vD7iKa_Gvi6Q')
+genai.configure(api_key=st.secretes'GEMINI_API_KEY')
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
