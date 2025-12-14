@@ -64,7 +64,7 @@ submit = st.button(
 #justs lets the user know they have to add more pictures, and the if and eles is for plural and singular
 if uploaded_images:
     image = Image.open(uploaded_images[0])
-    st.image(image, caption="Uploaded Image", use_container_width=True)
+    st.image(image, caption="Uploaded Image",width=300)
     if len(uploaded_images) == 4:
         st.success ("✅Your all set")
     else:
@@ -186,6 +186,7 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
 
