@@ -161,6 +161,16 @@ DONT HAVE ANYTHING LIKE THIS: The very low shine percentage (1.09%) and poor col
 dont give me details on the shine, and other factors i gave you
 if the rottens high, that means that there is less pesticides
 avredge each picture then show outcome
+use this formate, but change to situation:
+Here is the analysis of the fruit:
+Percentages:
+Rotten: 10%
+Ripe: 85%
+Pesticides: 5%
+Wax: 0%
+Health Analysis: This fruit seems fresh and wholesome. With 0.00% shine and 54.72% color uniformity, it has minimal pesticide or wax presence.
+The low 0.82% dark spots confirm it is ripe, healthy, and safe to enjoy.The fruit is likely ripe and natural, with very low indications of pesticide 
+treatment or wax application. There are minimal signs of rot.
 """.
         format(
             avg_color=d['avg_color'],
@@ -184,6 +194,7 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
 
