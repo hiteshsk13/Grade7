@@ -14,8 +14,8 @@ st.title("🍎 Crop Guard AI")
 st.markdown("""
 <b><u>About:</b></u><br> This is built to detect pesticides, wax, rot and ripe.<br>
 """, unsafe_allow_html=True)
-st.markdown("""<b><u>instructions:</b></u><br> upload 4 images of a fruit or vegetable, each one side of the fruit,
-then click the analyze button when it is green and wait till you recieve your answer.<br>
+st.markdown("""<b><u>instructions:</b></u><br> Upload 4 images of a fruit or vegetable, each showing a different side, 
+then click the analyze button when it turns green and wait until you receive the results.<br>
 """, unsafe_allow_html=True)
 
 
@@ -141,6 +141,10 @@ Numeric Data (from OpenCV analysis):
 - Shine percentage: {shine:.2f}
 - Dark spot percentage: {dark_spots:.2f}
 - Color uniformity: {color_uniformity:.2f}
+rotton is 30% or more dark spots
+and ripe is 5% and under
+stages of rotten is at 10%
+bumps of random dark spots also indicates rott
 
 Tasks:
 1. Determine if the fruit is likely treated with pesticides, waxed, ripe, or rotten.
@@ -170,7 +174,9 @@ Pesticides: 5%
 Wax: 0%
 Health Analysis: This fruit seems fresh and wholesome. With 0.00% shine and 54.72% color uniformity, it has minimal pesticide or wax presence.
 The low 0.82% dark spots confirm it is ripe, healthy, and safe to enjoy.The fruit is likely ripe and natural, with very low indications of pesticide 
-treatment or wax application. There are minimal signs of rot.
+treatment or wax application. There are minimal signs of rot. (and if needed any safer ways to eat it and tips like 
+"peel the skin and wash surly" or "dispose or use as compost"
+use as situation
 """.
         format(
             avg_color=d['avg_color'],
@@ -194,12 +200,5 @@ treatment or wax application. There are minimal signs of rot.
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
-
-
-
-
-
-
-
-
-
+    st.succes("upload another 4 images to detect pesticides on more fruits and veggitables")
+    
