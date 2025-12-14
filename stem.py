@@ -14,7 +14,7 @@ st.title("🍎 Crop Guard AI")
 st.markdown("""
 <b><u>About:</b></u><br> This is built to detect pesticides, wax, rot and ripe.<br>
 """, unsafe_allow_html=True)
-st.markdown("""<b><u>instructions:</b></u><br> Upload 4 images of a fruit or vegetable, each showing a different side, 
+st.markdown("""<b><u>Instructions:</b></u><br> Upload 4 images of a fruit or vegetable, each showing a different side, 
 then click the analyze button when it turns green and wait until you receive the results.<br>
 """, unsafe_allow_html=True)
 
@@ -202,3 +202,4 @@ use as situation
     st.markdown(response.text)
     st.succes("upload another 4 images to detect pesticides on more fruits and veggitables")
     
+
