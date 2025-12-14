@@ -14,7 +14,7 @@ st.title("🍎 Crop Guard AI")
 st.markdown("""
 <b><u>About:</b></u><br> This is built to detect pesticides, wax, rot and ripe.<br>
 """, unsafe_allow_html=True)
-st.markdown("""<b><u>instructions:</b></u><br> upload 4 images of a fruit or veggitable, each one side of the fruit,
+st.markdown("""<b><u>instructions:</b></u><br> upload 4 images of a fruit or vegetable, each one side of the fruit,
 then click the analyze button when it is green and wait till you recieve your answer.<br>
 """, unsafe_allow_html=True)
 
@@ -194,6 +194,7 @@ treatment or wax application. There are minimal signs of rot.
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
 
