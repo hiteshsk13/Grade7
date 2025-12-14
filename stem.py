@@ -8,7 +8,6 @@ from PIL import Image
 st.set_page_config(
     page_title="Crop Guard AI",
     page_icon="🍎",
-    layout="wide"
 )
 
 st.title("🍎 Crop Guard AI")
@@ -185,6 +184,7 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
 
