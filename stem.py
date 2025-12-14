@@ -19,8 +19,6 @@ then click the analyze button when it is green and wait till you recieve your an
 """, unsafe_allow_html=True)
 
 
-
-#genai.configure(api_key= 'AIzaSyBR5oTvJe26PWg--LnYf83vD7iKa_Gvi6Q')
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 model = genai.GenerativeModel("gemini-2.5-flash")
@@ -186,6 +184,7 @@ avredge each picture then show outcome
     # shows the AI result
     st.write("AI Analysis:")
     st.markdown(response.text)
+
 
 
 
