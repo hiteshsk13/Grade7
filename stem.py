@@ -199,7 +199,6 @@ use as situation
 
     # shows the AI result
     st.write("AI Analysis:")
-    st.markdown(response.text)
-    st.succes("upload another 4 images to detect pesticides on more fruits and veggitables")
-    
+    st.markdown(response.text)    
+
 
